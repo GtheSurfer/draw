@@ -14,15 +14,36 @@ import {
 } from 'react-native';
 
 export default class Draw extends Component {
-  
-  _onPressButton(){
-    Alert.alert('button pressed.');
+  _onPressBack(){
+    Alert.alert('going back to the previous scene.');
+  }
+  _onPressPhoto(){
+    Alert.alert('enlarge the photo.');
+  }
+  _onPressDone(){
+    Alert.alert('show confirm dialogue.');
   }
   _onPressColorPicker(){
     Alert.alert('color selected');
   }
-
-
+  _onPressAddColor(){
+    Alert.alert('show color palette.');
+  }
+  _onPressPencil(){
+    Alert.alert('pencil selected.');
+  }
+  _onPressEraser(){
+    Alert.alert('eraser selected.');
+  }
+  _onPressFinger(){
+    Alert.alert('you can move the canvas.');
+  }
+  _onPressRevert(){
+    Alert.alert('undo the lastest action.');
+  }
+  _onPressTrash(){
+    Alert.alert('show confirm dialogue.');
+  }
 
   render() {
     return (
@@ -31,29 +52,24 @@ export default class Draw extends Component {
         <View style = {styles.header}>
           <View style = {styles.headerUp}>
             <View style = {styles.headerUpPart01}>
-              <TouchableHighlight 
-                onPress={this._onPressButton} 
-                underlayColor="white">
-                  <View style={styles.btnBack}/>
+              <TouchableHighlight onPress={this._onPressBack}>
+                  <View style={styles.btnBack}>
+                    <Image source = {require('./img/Triangle.png')}/>
+                  </View>
               </TouchableHighlight>
             </View>
             <View style = {styles.headerUpPart02}>
-              <TouchableHighlight 
-                onPress={this._onPressButton} 
-                underlayColor="white">
+              <TouchableHighlight onPress={this._onPressPhoto}>
                   <View style={styles.photo}> 
                     <Image source={require('./img/photo.png')}/>
                   </View>
               </TouchableHighlight>
             </View>
             <View style = {styles.headerUpPart03}>
-              <TouchableHighlight 
-                onPress={this._onPressButton} 
-                underlayColor="white">
+              <TouchableHighlight onPress={this._onPressDone}>
                   <View style={styles.btnDone}>
                     <Text style = {styles.done}> DONE </Text>
                   </View>
-                  <View style = {styles.btnDoneShadow} />
               </TouchableHighlight>
             </View>
           </View>
@@ -75,39 +91,25 @@ export default class Draw extends Component {
         </View>
         <View style = {styles.footer}>
           <View style = {styles.footerUp}>
-            <TouchableHighlight 
-              onPress={this._onPressColorPicker} 
-              underlayColor="white">
+            <TouchableHighlight onPress={this._onPressColorPicker}>
                 <View style={styles.colorPicker}/>
             </TouchableHighlight>
-            <TouchableHighlight 
-              onPress={this._onPressColorPicker} 
-              underlayColor="white">
+            <TouchableHighlight onPress={this._onPressColorPicker}>
                 <View style={styles.colorPicker}/>
             </TouchableHighlight>
-            <TouchableHighlight 
-              onPress={this._onPressColorPicker} 
-              underlayColor="white">
+            <TouchableHighlight onPress={this._onPressColorPicker}>
                 <View style={styles.colorPicker}/>
             </TouchableHighlight>
-            <TouchableHighlight 
-              onPress={this._onPressColorPicker} 
-              underlayColor="white">
+            <TouchableHighlight onPress={this._onPressColorPicker}>
                 <View style={styles.colorPicker}/>
             </TouchableHighlight>
-            <TouchableHighlight 
-              onPress={this._onPressColorPicker} 
-              underlayColor="white">
+            <TouchableHighlight onPress={this._onPressColorPicker}>
                 <View style={styles.colorPicker}/>
             </TouchableHighlight>
-            <TouchableHighlight 
-              onPress={this._onPressColorPicker} 
-              underlayColor="white">
+            <TouchableHighlight onPress={this._onPressColorPicker}>
                 <View style={styles.colorPicker}/>
             </TouchableHighlight>
-            <TouchableHighlight 
-              onPress={this._onPressColorPicker} 
-              underlayColor="white">
+            <TouchableHighlight onPress={this._onPressAddColor}>
                 <View style={styles.btnAddColor}>
                   <Image source={require('./img/plus.png')}/>
                 </View>
@@ -115,35 +117,35 @@ export default class Draw extends Component {
           </View>
           <View style = {styles.footerDn}>
             <TouchableHighlight 
-              onPress={this._onPressButton} 
+              onPress={this._onPressPencil} 
               underlayColor="#F43455">
                 <View style={styles.button}>
                   <Image source={require('./img/pencil.png')}/>
                 </View>
             </TouchableHighlight>
             <TouchableHighlight 
-              onPress={this._onPressButton} 
+              onPress={this._onPressEraser} 
               underlayColor="#F43455">
                 <View style={styles.button}>
                   <Image source={require('./img/eraser.png')} />
                 </View>
             </TouchableHighlight>
             <TouchableHighlight 
-              onPress={this._onPressButton} 
+              onPress={this._onPressFinger} 
               underlayColor="#F43455">
                 <View style={styles.button}>
                   <Image source={require('./img/finger.png')}/>
                 </View>
             </TouchableHighlight>
             <TouchableHighlight 
-              onPress={this._onPressButton} 
+              onPress={this._onPressRevert} 
               underlayColor="#F43455">
                 <View style={styles.button}>
                   <Image source={require('./img/revert.png')}/>
                 </View>
             </TouchableHighlight>
             <TouchableHighlight 
-              onPress={this._onPressButton} 
+              onPress={this._onPressTrash} 
               underlayColor="#F43455">
                 <View style={styles.button}>
                   <Image source={require('./img/trash.png')}/>
@@ -158,7 +160,7 @@ export default class Draw extends Component {
 
 const styles = StyleSheet.create({
   osStatus: {
-    height: 31, backgroundColor: '#222',
+    height: 31, backgroundColor: '#000',
   },
   container: {
     flex: 1,
@@ -171,14 +173,17 @@ const styles = StyleSheet.create({
       justifyContent: 'flex-start', alignItems: 'stretch',
     },
       headerUp:{
-        flex: 2, flexDirection: 'row', justifyContent: 'space-between'
+        flex: 2, flexDirection: 'row', 
+        justifyContent: 'space-between'
       },
         headerUpPart01:{
-          flex:1, alignItems: 'flex-start'
+          flex:1, 
+          alignItems: 'flex-start'
         },
           btnBack:{
-            backgroundColor: 'pink', 
-            width: 50, height: 50, borderRadius: 25, marginLeft: 10,
+            justifyContent: 'center', alignItems: 'center',
+            backgroundColor: '#F2007C', width: 50, height: 50, 
+            borderRadius: 25, marginLeft: 10, marginTop: 5, paddingRight: 5
           },
         headerUpPart02: {
           flex: 1, alignItems: 'center',
@@ -192,14 +197,10 @@ const styles = StyleSheet.create({
         },
           btnDone:{
             backgroundColor: '#B90CDC', justifyContent: 'center', alignItems: 'center',
-            width: 103, height: 58, transform : [{rotate: '3deg'}]
+            width: 103, height: 58, transform: [ {rotate: '3deg'}]
           },
           done:{
             fontFamily: 'helvetica neue', fontWeight: 'bold', fontSize: 25, color: '#00E9EE',
-          },
-          btnDoneShadow:{
-            backgroundColor: '#B90CDC', justifyContent: 'center', alignItems: 'center',
-            width: 103, height: 58,
           },
       headerDn: {
         flex: 1,flexDirection: 'row',
@@ -243,7 +244,7 @@ const styles = StyleSheet.create({
         },
         btnAddColor:{
           margin: 5, width: 40, height: 40, justifyContent: 'center', alignItems: 'center',
-          borderWidth: 2, borderRadius: 20, borderColor: '#fff', paddingRight: 1,
+          borderWidth: 2, borderRadius: 20, borderColor: '#fff', borderStyle : 'dotted', paddingRight: 1,
         },
       footerDn: {
         flexDirection: 'row',
